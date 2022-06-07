@@ -43,7 +43,12 @@ public class UserServlet extends HttpServlet{
 		userimpl=new UserDAOImpl();
 		User user =userimpl.getUser(name, pwd);
 		System.out.println(user.userName);
-		res.sendRedirect("Search.html");
+		if (user.getRole().equals("1")) {
+			res.sendRedirect("Search.html");
+		}else {
+			res.sendRedirect("Manage.jsp");
+		}
+		
 	}
 
 	//注册功能
