@@ -46,9 +46,7 @@
 					</a>
 				</li>
 				<li>
-					<!--<a href="javascript:void(0);" url="Orders?method=list&uerID=${userID}" title="订单管理">-->
-					<a href="javascript:void(0);" url="Orders?method=list&userID=1" title="订单管理">
-					
+					<a href="javascript:void(0);" url="Orders?method=list&userID=${userID}" title="订单管理">
 					订单管理
 					</a>
 				</li>

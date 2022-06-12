@@ -9,7 +9,7 @@ import java.util.List;
 //import jakarta.servlet.ServletException;
 
 import impl.OrdersDaoImpl;
-import impl.UserDAOImpl;
+import impl.FlightInfoImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -43,7 +43,7 @@ public class OrderServlet extends HttpServlet {
 	
 	public void list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId=request.getParameter("userID");
-		System.out.println("userId:"+userId);
+		System.out.println("（list）userId:"+userId);
 		String pageNostring=request.getParameter("pageNo");
 		
 		int pageNo=1;
@@ -56,7 +56,7 @@ public class OrderServlet extends HttpServlet {
 		
 		//总记录数
 		OrdersDaoImpl ordersDaoImpl = new OrdersDaoImpl();
-		List<Orders> allorder=ordersDaoImpl.showUser();		
+		List<Orders> allorder=ordersDaoImpl.showOrders();		
 		int totalCount=allorder.size();
 		
 		//总页数
@@ -75,16 +75,15 @@ public class OrderServlet extends HttpServlet {
 			prePage=pageNo-1;
 		}
 
-		System.out.println("_________1________");
-//		Orders order=null;
+
 		List<Orders> orderList=null;
 		try {
-			orderList=ordersDaoImpl.listOrders(pageNo, pageSize);	
+			orderList=ordersDaoImpl.listOrders(userId,pageNo, pageSize);	
 		} catch (Exception e) {
 			System.out.println("这有问题");
 			e.printStackTrace();
 		}
-		System.out.println("_________2________");
+
 		request.setAttribute("orderList", orderList);
 		request.setAttribute("totalCount", totalCount);
 		request.setAttribute("totalPage", totalPage);
@@ -92,7 +91,7 @@ public class OrderServlet extends HttpServlet {
 		request.setAttribute("prePage", prePage);
 		request.setAttribute("pageNo", pageNo);
 		request.setAttribute("pageSize", pageSize);
-//		request.setAttribute("order", order);	
+
 		request.getRequestDispatcher("/ManageOrders.jsp").forward(request, response);
 		
 	}
@@ -109,6 +108,8 @@ public class OrderServlet extends HttpServlet {
 		list(request, response);
 	}
 	
+	
+	
 	//跳转详情页面
 	public void details(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId=request.getParameter("userID");
@@ -116,7 +117,6 @@ public class OrderServlet extends HttpServlet {
 		
 		OrdersDaoImpl ordersDaoImpl = new OrdersDaoImpl();
 
-		System.out.println("_________1________");
 		Orders order=null;
 		try {
 			order=ordersDaoImpl.findByID(userId);	
@@ -124,18 +124,33 @@ public class OrderServlet extends HttpServlet {
 			System.out.println("这有问题");
 			e.printStackTrace();
 		}
-		System.out.println("_________2________");
 
+		
+		
+		List<FlightInfo> flightInfoList = new ArrayList<FlightInfo>();
+		//找FilghInfo
+		FlightInfoImpl flightInfoImpl = new FlightInfoImpl();
+		FlightInfo flightInfo=flightInfoImpl.findFlightInfo(order.getFno());
+
+		System.out.println(flightInfo.toString());
+		
+		//将FilghInfo放入flightInfoList
+		flightInfoList.add(flightInfo);
+		
+		
+		//设置返回的参数
+		request.setAttribute("flightInfoList", flightInfoList);	
 		request.setAttribute("order", order);	
 		request.getRequestDispatcher("/Order.jsp").forward(request, response);
 		
-//		for(int i = 0; i < seatTypeList.length; i++){
-//		seatTypeList[i] = request.getParameter("seatType" + (i + 1)); System.out.println(seatTypeList[i]);
-//	}
-//	String contactName = request.getParameter("contact");
-//	String contactPhone	= request.getParameter("phone");
-//	
-	List<FlightInfo> flightInfoList = new ArrayList<FlightInfo>();
+////		for(int i = 0; i < seatTypeList.length; i++){
+////		seatTypeList[i] = request.getParameter("seatType" + (i + 1)); System.out.println(seatTypeList[i]);
+////	}
+////	String contactName = request.getParameter("contact");
+////	String contactPhone	= request.getParameter("phone");
+////	
+	
+	
 //	Orders order;
 //	try {
 //		for (String idString : fIDList) { 

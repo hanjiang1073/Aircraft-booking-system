@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.BaseDAO;
+import pojo.FlightInfo;
 import pojo.Orders;
 import pojo.User;
 
@@ -29,16 +30,16 @@ public class OrdersDaoImpl extends BaseDAO<Orders> {
 	}
 	
 	// 按页列出所有用户信息
-	public List<Orders> listOrders(int pageNo, int pageSize) {
+	public List<Orders> listOrders(String userID,int pageNo, int pageSize) {
 		// eg select * from (select rownum no,testtab.* from testtab where rownum<=10)
 		// where no>=4; 检索记录4~10行
 		return super.executeQuery(
-				"select \"orderID\",\"userID\",\"fno\",\"price\",\"pName\",\"pIDNumber\" from (select rownum no,\"t_ticket\".* from \"t_ticket\" where rownum<=?) where no>=?",
-				pageNo * pageSize, (pageNo - 1) * pageSize + 1);
+				"select \"orderID\",\"userID\",\"fno\",\"price\",\"pName\",\"pIDNumber\" from (select rownum no,\"t_ticket\".* from \"t_ticket\" where \"userID\"=? and rownum<=?) where no>=?",
+				userID,pageNo * pageSize, (pageNo - 1) * pageSize + 1);
 	}
 
 	// 列出所有信息
-	public List<Orders> showUser() {
+	public List<Orders> showOrders() {
 		return super.executeQuery("select * from \"t_ticket\"", null);
 	}
 
@@ -48,54 +49,11 @@ public class OrdersDaoImpl extends BaseDAO<Orders> {
 		j=super.executeUpdate("delete from \"t_ticket\" where \"userID\"=? and \"orderID\"=? and \"fno\"=?", userID,orderID,fno);
 		if(j>0)System.out.println("删除了一个order");
 	}
-	/*
-	@Override
-	public List<Orders> findByContactName(String contactName) throws Exception {
-		// TODO Auto-generated method stub
-		String sql = "select * from orders where contactName=?";
-		this.pstmt = this.conn.prepareStatement(sql);
-		this.pstmt.setString(1, contactName);
-		ResultSet resultSet = this.pstmt.executeQuery();
-		
-		List<Orders> list = new ArrayList<>();
-		Orders orders = null;
-		while(resultSet.next()){
-			orders = new Orders();
-			orders.setId(resultSet.getInt(1));
-			orders.setTripID(resultSet.getInt(2));
-			orders.setCreateDate(resultSet.getDate(3));
-			orders.setCreateTime(resultSet.getTime(4));
-			orders.setTotalFare(resultSet.getDouble(5));
-			orders.setContactName(resultSet.getString(6));
-			orders.setContactPhone(resultSet.getString(7));
-			list.add(orders);
-		}
-		this.pstmt.close();
-		return list;
-	}
+	
+	
 
-	@Override
-	public List<Orders> findAll() throws Exception {
-		// TODO Auto-generated method stub
-		String sql = "select * from orders";
-		this.pstmt = this.conn.prepareStatement(sql);
-		ResultSet resultSet = this.pstmt.executeQuery();
-		
-		List<Orders> list = new ArrayList<>();
-		Orders orders = null;
-		while(resultSet.next()){
-			orders = new Orders();
-			orders.setId(resultSet.getInt(1));
-			orders.setTripID(resultSet.getInt(2));
-			orders.setCreateDate(resultSet.getDate(3));
-			orders.setCreateTime(resultSet.getTime(4));
-			orders.setTotalFare(resultSet.getDouble(5));
-			orders.setContactName(resultSet.getString(6));
-			orders.setContactPhone(resultSet.getString(7));
-			list.add(orders);
-		}
-		this.pstmt.close();
-		return list;
-	}
-*/
+	
+	
+	
+	
 }

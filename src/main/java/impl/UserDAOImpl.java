@@ -16,9 +16,11 @@ public class UserDAOImpl extends BaseDAO<User>{
 	}
 	
 	//注册
-	public int registUser(String name,String phoneNumber,String pwd,String idNumber) {
+	public String registUser(String name,String phoneNumber,String pwd,String idNumber) {
 		//注册用户，默认类型为普通用户 role=1
-		return executeUpdate("insert into \"t_user\" values (?,?,?,?,?,?)", String.valueOf(userID),name,phoneNumber,idNumber,String.valueOf(1),pwd);
+		String str_userID=String.valueOf(userID);
+		executeUpdate("insert into \"t_user\" values (?,?,?,?,?,?)",str_userID ,name,phoneNumber,idNumber,String.valueOf(1),pwd);
+		return str_userID;
 	}
 	
 	//列出所有信息

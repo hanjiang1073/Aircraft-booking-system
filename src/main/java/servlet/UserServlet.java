@@ -90,7 +90,7 @@ public class UserServlet extends HttpServlet{
 		User user =userimpl.getUser(name, pwd);
 		System.out.println(user.userName);
 		if (user.getRole().equals("1")) {
-			req.setAttribute("userID", user.getIDNumber());
+			req.setAttribute("userID", user.getUserID());
 //			res.sendRedirect("Reception.jsp");
 			req.getRequestDispatcher("Reception.jsp").forward(req, res);
 		}else {
@@ -105,10 +105,12 @@ public class UserServlet extends HttpServlet{
 		String pwd=req.getParameter("registPwd");
 		String idcard=req.getParameter("registIDcard");
 		String phone=req.getParameter("phoneNumber");
-		System.out.println(name+pwd+idcard+phone);
+		System.out.println(name+" "+pwd+" "+idcard+" "+phone);
 		userimpl=new UserDAOImpl();
-		userimpl.registUser(name, phone, pwd, idcard);
-		res.sendRedirect("Reception.jsp");
+		String userID=userimpl.registUser(name, phone, pwd, idcard);
+		req.setAttribute("userID", userID);
+//		res.sendRedirect("Reception.jsp");
+		req.getRequestDispatcher("Reception.jsp").forward(req, res);
 	}
 	
 	

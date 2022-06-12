@@ -67,7 +67,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 			<div class="g_extend">
 				<!-- <button class="go_extend_but" type="button">打印订单</button> -->
-				<button class="go_extend_but go_eb_cancel" type="button">取消订单</button>
+				<!-- <button class="go_extend_but go_eb_cancel" type="button">取消订单</button> -->
+				
 			</div>
 		</div>
 
@@ -121,23 +122,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<div class="gf_info_detail">
 										<div class="gf_info_airline">
 											<span>${flightInfo.airlineName}</span>
-											<span>${flightInfo.airlineCode}${flightInfo.number}</span>
+											<%--<span>${flightInfo.airlineCode}${flightInfo.number}</span> --%>
 											<span>${flightInfo.airplaneName}</span>
 										</div>
 										
 										<div class="gf_info_time">
 											<div class="gf_info_depart">
 												<span class="gfi_time">
-													<fmt:formatDate value="${flightInfo.depatureTime}" type="both" pattern="HH:mm"/>
+													${flightInfo.departtime}
+													<%-- <fmt:formatDate value="${flightInfo.departtime}" type="both" pattern="HH:mm"/> --%>	
 												</span>
-												<span>${flightInfo.depatureAirportName}</span>
+												<span>${flightInfo.departapname}</span>
 											</div>
 											<img src="images/result_arrow.png">
 											<div class="gf_info_arrive">
 												<span class="gfi_time">
-													<fmt:formatDate value="${flightInfo.arrivalTime}" type="both" pattern="HH:mm"/>
+													${flightInfo.arrivetime}
+													<%-- <fmt:formatDate value="${flightInfo.arrivetime}" type="both" pattern="HH:mm"/> --%>
 												</span>
-												<span>${flightInfo.arrivalAirportName}</span>
+												<span>${flightInfo.arriveapname}</span>
 											</div>
 											<div class="gf_info_costTime">
 												<img src="images/g_costTime_icon.png">
