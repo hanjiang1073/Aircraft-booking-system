@@ -11,11 +11,7 @@
 <link rel="stylesheet" href="${basePath}css/ManageStyles.css"/>
 <script src="${basePath}js/jquery-3.6.0.js" type="text/javascript"></script>
 <script type="text/javascript">
-	$(function(){
-		$('.edit').click(function(){
-			
-		})
-	})
+	
 </script>
 <title>Insert title here</title>
 </head>

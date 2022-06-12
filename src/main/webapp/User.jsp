@@ -235,7 +235,7 @@
     
 	<!-- 注册 -->
     <div class="container__form container--signup">
-      <form action="user" class="form" id="form1" >
+      <form action="${basePath}User?method=regist" class="form" id="form1" method="post">
         <h2 class="form__title">ATS注册界面</h2>
         <!-- 隐藏域 -->
       	<input type="hidden" id="hidden-name" name="operate" value="regist"/>
@@ -250,7 +250,7 @@
     
     <!-- 登录 -->
     <div class="container__form container--signin">
-      <form action="user" class="form" id="form2"  >
+      <form action="${basePath}User?method=login" class="form" id="form2" method="post">
       	<!-- 隐藏域 -->
       	<input type="hidden" id="hidden-name" name="operate" value="login"/>
         <h2 class="form__title">ATS登录界面</h2>

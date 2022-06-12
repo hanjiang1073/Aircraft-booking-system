@@ -46,13 +46,13 @@
 					</a>
 				</li>
 				<li>
-					<a href="javascript:void(0);" url="ManageAirplane.jsp" title="飞机管理">
+					<a href="javascript:void(0);" url="${basePath}Airplane?method=listAirplane" title="飞机管理">
 					飞机管理
 					</a>
 				</li>
 				<li>
-					<a href="javascript:void(0);" url="ManageAirport.jsp" title="机场管理">
-					机场管理
+					<a href="javascript:void(0);" url="${basePath}User?method=listUser" title="用户管理">
+					用户管理
 					</a>
 				</li>
 			
@@ -62,6 +62,7 @@
 	<div class="main">
 		<div class="location">
 			<span class="manage_title"></span>
+			<a class="log_out" href="/AirWeb/User.jsp">退出登录</a>
 		</div>
 		<iframe src="" width="95%" height="90%" frameborder="0"></iframe>
 	</div>

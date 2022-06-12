@@ -10,8 +10,8 @@ import java.util.List;
 public abstract class BaseDAO<T> {
 	public final String DRIVER="oracle.jdbc.driver.OracleDriver";
 	public final String URL="jdbc:oracle:thin:@localhost:1521/orcl";
-	public final String USER="C##TKOTKCh";
-	public final String PWD="Ch1992";
+	public final String USER="C##hzl";
+	public final String PWD="011125";
 	private java.sql.Connection conn;
 	private PreparedStatement psmt;
 	private ResultSet rs;
@@ -219,5 +219,43 @@ public abstract class BaseDAO<T> {
             close(rs,psmt,conn);
         }
         return list ;
+    }
+    
+  //执行单条查询，返回T
+    protected T executeOneQuery(String sql , Object... params){
+        T entity=null;
+        try {
+            conn = getConn() ;
+            psmt = conn.prepareStatement(sql);
+            setParams(psmt,params);
+            rs = psmt.executeQuery();
+
+            //通过rs可以获取结果集的元数据
+            //元数据：描述结果集数据的数据 , 简单讲，就是这个结果集有哪些列，什么类型等等
+
+            ResultSetMetaData rsmd = rs.getMetaData();
+            //获取结果集的列数
+            int columnCount = rsmd.getColumnCount();
+            //6.解析rs
+            if(rs.next()){
+                entity = (T)entityClass.newInstance();
+
+                for(int i = 0 ; i<columnCount;i++){
+                    String columnName = rsmd.getColumnName(i+1);            //fid   fname   price
+                    Object columnValue = rs.getObject(i+1);     //33    苹果      5
+                    setValue(entity,columnName,columnValue);
+                }
+                return entity;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } finally {
+            close(rs,psmt,conn);
+        }
+		return entity;
     }
 }

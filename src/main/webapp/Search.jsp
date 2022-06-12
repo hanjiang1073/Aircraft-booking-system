@@ -20,25 +20,14 @@
 	<link rel="stylesheet" type="text/css" href="css/absBase.css">
 	<link rel="stylesheet" type="text/css" href="css/search.css">
 	<script type="text/javascript" src="js/search.js"></script>
+>
 </head>
 <body>
 
 	<div class="s_box">
-		<form action="servlet/SearchServlet" method="post" class="s_box_container">
-			<div class="s_row s_tab_line clearfix">
-				<button type="button" class="s_tab">国内机票</button>
-				<button type="button" class="s_tab">国际机票</button>
-			</div>
-			<div class="s_row">
-				<span class="s_label">航行类型</span>
-
-				<label for="s_radio_oneWay" class="user_unSelect">
-					<input class="s_radioBut" type="radio" name="tripType" value="oneWay" id="s_radio_oneWay" checked="checked" onclick="radioButClick(this)">单程
-				</label>
-				<label for="s_radio_roundTrip" class="user_unSelect">
-					<input class="s_radioBut" type="radio" name="tripType" value="roundTrip" id="s_radio_roundTrip" onclick="radioButClick(this)">往返
-				</label>
-			</div>
+		<form action="search" method="post" class="s_box_container">
+			
+			
 			<div class="s_row">
 				<span class="s_label">出发城市</span>
 				<!-- <input class="s_text" type="text" name="departureCity"> -->
@@ -51,11 +40,11 @@
 				  <option value ="深圳">深圳</option>
 				  <option value ="成都">成都</option>
 				  <option value ="沈阳">沈阳</option>
-				  <option value ="西藏">西藏</option>
+				  <option value ="拉萨">拉萨</option>
 				</select>
 				
 				<span class="s_label">出发日期</span>
-				<input id="dDate" class="s_text s_date" type="date" name="departureDate">
+				<input id="dDate" class="s_text " type="text" name="departureDate">
 			</div>
 			<div class="s_row">
 				<span class="s_label">到达城市</span>
@@ -69,15 +58,15 @@
 				  <option value ="深圳">深圳</option>
 				  <option value ="成都">成都</option>
 				  <option value ="沈阳">沈阳</option>
-				  <option value ="西藏">西藏</option>
+				  <option value ="拉萨">拉萨</option>
 				</select>
 				
 				<span class="s_label">返回日期</span>
-				<input id="aDate" class="s_text s_date" type="date" name="returnDate" id="s_returnDate" disabled="disabled">
+				<input id="aDate" class="s_text" type="text" name="returnDate" id="s_returnDate" disabled="disabled">
 			</div>
 
 			<div class="s_row">
-				<input  class="s_submit" type="submit" value="搜索机票">
+				<input  class="s_submit" type="submit" value="搜索机票" >
 			</div>
 		</form>
 	</div>
