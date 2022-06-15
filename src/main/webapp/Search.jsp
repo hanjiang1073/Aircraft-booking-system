@@ -25,7 +25,7 @@
 <body>
 
 	<div class="s_box">
-		<form action="search" method="post" class="s_box_container">
+		<form action="search" class="s_box_container">
 			
 			
 			<div class="s_row">
@@ -67,6 +67,10 @@
 
 			<div class="s_row">
 				<input  class="s_submit" type="submit" value="搜索机票" >
+			</div>
+			<div class="s_row">
+				<input name="userID" type="hidden" value=${userID}>
+				<input name="method0" type="hidden" value="toSearchFlight">
 			</div>
 		</form>
 	</div>

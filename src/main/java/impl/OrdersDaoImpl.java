@@ -17,7 +17,7 @@ public class OrdersDaoImpl extends BaseDAO<Orders> {
 	public void add(Orders orders) throws Exception {
 		// TODO Auto-generated method stub
 		
-		super.executeUpdate("insert into \"t_ticket\" values (?,?,?,?,?)",orders.getUserID(),orders.getFno(),orders.getPrice(),orders.getpName(),orders.getpIDNumber() );
+		super.executeUpdate("insert into \"t_ticket\" values (?,?,?,?,?,?)",orders.getUserID(),orders.getFno(),orders.getPrice(),orders.getpName(),orders.getpIDNumber(),orders.getOrderID() );
 		
 	}
 

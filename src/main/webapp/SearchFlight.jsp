@@ -20,6 +20,8 @@
 		到达城市:<input type="text" name="arrivalCity">
 		出发时间:<input type="text" name="departureDate">
 		<button>查询</button>
+		<input name="userID" type="hidden" value=${userID}>
+		<input name="method0" type="hidden" value="toSearchFlight">
 		
 	</div>
 	</form>
@@ -46,7 +48,7 @@
 			<td>${flight.arrivetime}</td>
 			<td>${flight.price}</td>
 			<td>
-				<button class="reserve">
+				<button class="reserve" type="button" onclick="alert('确认预定？');window.location.href='${basePath}search?method0=toBooking&userID=${userID}&fno=${flight.fno}'">
 					预定
 				</button>
 				

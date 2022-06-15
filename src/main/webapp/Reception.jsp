@@ -41,7 +41,8 @@
 		<div class="menux">
 			<ul>
 				<li>
-					<a href="javascript:void(0);" url="Search.jsp" title="预定航班">
+					<a href="javascript:void(0);" url="search?method0=toSearch&userID=1" title="预定航班">
+					<%-- <a href="javascript:void(0);" url="search?method0=toSearch&userID=${userID}" title="预定航班">--%>
 					预定航班
 					</a>
 				</li>
