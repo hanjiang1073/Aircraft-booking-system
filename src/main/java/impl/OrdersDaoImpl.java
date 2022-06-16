@@ -22,10 +22,10 @@ public class OrdersDaoImpl extends BaseDAO<Orders> {
 	}
 
 	//通过userID返回Order实体
-	public Orders findByID(String userID) throws Exception {
+	public Orders findByID(String orderID) throws Exception {
 		// TODO Auto-generated method stub
-		String sql = "select * from \"t_ticket\" where \"userID\"=?";
-		Orders o=super.executeOneQuery(sql, userID);
+		String sql = "select * from \"t_ticket\" where \"orderID\"=?";
+		Orders o=super.executeOneQuery(sql, orderID);
 		return o;
 	}
 	
@@ -39,8 +39,8 @@ public class OrdersDaoImpl extends BaseDAO<Orders> {
 	}
 
 	// 列出所有信息
-	public List<Orders> showOrders() {
-		return super.executeQuery("select * from \"t_ticket\"", null);
+	public List<Orders> showOrders(String userID) {
+		return super.executeQuery("select * from \"t_ticket\" where \"userID\"=?", userID);
 	}
 
 	//删除

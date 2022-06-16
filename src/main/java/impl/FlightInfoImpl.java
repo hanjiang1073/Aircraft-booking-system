@@ -19,7 +19,7 @@ public class FlightInfoImpl extends BaseDAO<FlightInfo>{
 	//查询航班的所有信息
 	public FlightInfo findFlightInfo(String fno) {
 		FlightInfo f=null;
-		String sql="SELECT \"departtime\" \"depatureDate\",\"departtime\",\"arrivetime\",\"departapname\",\"arriveapname\",a1.\"location\" \"depatureAirportCity\",a2.\"location\" \"arrivalAirportCity\",c.\"cname\" \"airlineName\",p.\"ptype\" \"airplaneName\"from \"t_flight\" f,\"t_airport\" a1,\"t_airport\" a2,\"t_airplane\" p,\"t_company\" c where f.\"departapname\"=a1.\"apname\" and f.\"arriveapname\"=a2.\"apname\" and f.\"pno\"=p.\"pno\" and p.\"cno\"=c.\"cno\" and f.\"fno\"=?";
+		String sql="SELECT \"departtime\" \"depatureDate\",\"departtime\",\"arrivetime\",\"departapname\",\"arriveapname\",a1.\"location\" \"depatureAirportCity\",a2.\"location\" \"arrivalAirportCity\",c.\"cname\" \"airlineName\",p.\"ptype\" \"airplaneName\"from \"t_flight\" f,\"t_airport\" a1,\"t_airport\" a2,\"t_airplane\" p,\"t_company\" c where f.\"departapname\"=a1.\"apname\" and f.\"arriveapname\"=a2.\"apname\" and f.\"pno\"=p.\"pno\" and p.\"cname\"=c.\"cname\" and f.\"fno\"=?";
 		java.sql.Connection conn=null;
 		PreparedStatement psmt=null;
 		ResultSet rs=null;

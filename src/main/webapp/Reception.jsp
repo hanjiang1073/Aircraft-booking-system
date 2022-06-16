@@ -41,13 +41,13 @@
 		<div class="menux">
 			<ul>
 				<li>
-					<a href="javascript:void(0);" url="search?method0=toSearch&userID=1" title="预定航班">
-					<%-- <a href="javascript:void(0);" url="search?method0=toSearch&userID=${userID}" title="预定航班">--%>
+					<%-- <a href="javascript:void(0);" url="search?method0=toSearch&userID=1655301876821" title="预定航班">--%>
+					<a href="javascript:void(0);" url="search?method0=toSearch&userID=${userID}" title="预定航班">
 					预定航班
 					</a>
 				</li>
 				<li>
-					<a href="javascript:void(0);" url="Orders?method=list&userID=1" title="订单管理">
+					<a href="javascript:void(0);" url="Orders?method=list&userID=${userID}" title="订单管理">
 					订单管理
 					</a>
 				</li>

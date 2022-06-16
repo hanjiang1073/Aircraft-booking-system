@@ -87,8 +87,8 @@ public class AirplaneServlet extends HttpServlet{
 		String ptype=req.getParameter("ptype");
 		String[]info=new String[4];
 		info[0]=cname;
-		info[1]=capcity;
-		info[2]=ptype;
+		info[2]=capcity;
+		info[1]=ptype;
 		info[3]=pno;
 		airplaneImpl.updateAirplane(info);
 		req.setAttribute("pageNo", 1);

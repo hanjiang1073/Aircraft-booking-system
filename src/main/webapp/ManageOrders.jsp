@@ -49,7 +49,7 @@
 			<td>${order.pName}</td>
 			<td>${order.pIDNumber}</td>
 			<td>
-				<button class="edit" type="button" onclick="window.location.href='${basePath}Orders?method=details&userID=${order.userID}'">
+				<button class="edit" type="button" onclick="window.location.href='${basePath}Orders?method=details&orderID=${order.orderID}'">
 					详情
 				</button>
 				<button class="remove" type="button" onclick="alert('确认删除？');window.location.href='${basePath}Orders?method=deleteOrder&userID=${order.userID}&orderID=${order.orderID}&fno=${order.fno}'">
@@ -61,16 +61,17 @@
 	</table>
 	<table class="page">
 		<td>
-			<button type="button" onclick="javascript:go(1);">首页</button>
-			<button type="button" onclick="javascript:go(${prePage})">上一页</button>
-			<button type="button" onclick="javascript:go(${nextPage})">下一页</button>
-			<button type="button" onclick="javascript:go(${totalPage})">尾页</button>
-			<%--总记录条数${totalCount}条  --%>当前${pageNo}/${totalPage}页 每${pageSize}条数据一页 
+			<button type="button" onclick="javascript:go(1,${userID});">首页</button>
+			<button type="button" onclick="javascript:go(${prePage},${userID})">上一页</button>
+			<button type="button" onclick="javascript:go(${nextPage},${userID})">下一页</button>
+			<button type="button" onclick="javascript:go(${totalPage},${userID})">尾页</button>
+			总记录条数${totalCount}条  当前${pageNo}/${totalPage}页 每${pageSize}条数据一页 
 		</td>
 	</table>
 	<script type="text/javascript">
-		function go(page){
-			window.location.href="User?method=listUser&pageNo="+page;
+		function go(page,userID){
+			window.location.href="${basePath}Orders?method=list&userID="+userID+"&pageNo="+page;
+
 		}
 	</script>
 <body>

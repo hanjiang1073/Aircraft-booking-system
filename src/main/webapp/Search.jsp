@@ -40,7 +40,7 @@
 				  <option value ="深圳">深圳</option>
 				  <option value ="成都">成都</option>
 				  <option value ="沈阳">沈阳</option>
-				  <option value ="拉萨">拉萨</option>
+				  <option value ="拉萨">厦门</option>
 				</select>
 				
 				<span class="s_label">出发日期</span>
@@ -58,7 +58,7 @@
 				  <option value ="深圳">深圳</option>
 				  <option value ="成都">成都</option>
 				  <option value ="沈阳">沈阳</option>
-				  <option value ="拉萨">拉萨</option>
+				  <option value ="拉萨">厦门</option>
 				</select>
 				
 				<span class="s_label">返回日期</span>

@@ -211,9 +211,10 @@ public class FlightServlet extends HttpServlet{
 			if(!departtime.equals("")) {
 				if(flag==0) {
 					flag++;
-					sql+=" \"departtime\"="+"'"+departtime+"'";
+					sql+=" SUBSTR(\"departtime\",0,10)="+"'"+departtime+"'";
+//					substr("departtime",0,10)=?
 				}else {
-					sql+=" and \"departtime\"="+"'"+departtime+"'";
+					sql+=" and SUBSTR(\"departtime\",0,10)="+"'"+departtime+"'";
 				}
 			}
 			

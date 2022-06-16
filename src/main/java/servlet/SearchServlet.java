@@ -19,6 +19,7 @@ public class SearchServlet extends HttpServlet{
 
 		req.setCharacterEncoding("UTF-8");
 		String method=req.getParameter("method0");
+System.out.println("method:"+method);
 		if("toSearch".equals(method)) {
 			toSearch(req,res);
 		}else if("toSearchFlight".equals(method)){
@@ -47,15 +48,48 @@ public class SearchServlet extends HttpServlet{
 		
 		String userID=req.getParameter("userID");
 
-		System.out.println(userID);
+System.out.println(userID);
 		
 		//String returnDate  =req.getParameter("returnDate");
+		String pageNostring=req.getParameter("pageNo");
+		int pageNo=1;
+		if (pageNostring!=null) {
+			pageNo=Integer.parseInt(pageNostring);
+		}
+System.out.println(pageNo);
+		int pageSize=5;
 		
 		List<Flight> searchList = ssi.searchFlight(departureCity, departureDate, arrivalCity);
-		req.setAttribute("searchList", searchList);
-System.out.println(searchList.isEmpty());
+System.out.println(searchList.isEmpty());	
+		int totalCount=searchList.size();
+		int totalPage=totalCount/pageSize;
+		if(totalCount%pageSize!=0||totalPage==0) {
+			totalPage++;
+		}
 		
+		
+		int prePage=pageNo;
+		if(prePage>1) {
+			prePage=pageNo-1;
+		}
+		
+		int nextPage=pageNo;
+		if(nextPage<totalPage) {
+			nextPage=pageNo+1;
+		}
+		
+		searchList = ssi.searchFlight(departureCity, departureDate, arrivalCity , pageNo, pageSize);
+		req.setAttribute("searchList", searchList);
+		req.setAttribute("totalCount", totalCount);
+		req.setAttribute("totalPage", totalPage);
+		req.setAttribute("nextPage", nextPage);
+		req.setAttribute("prePage", prePage);
+		req.setAttribute("pageNo", pageNo);
+		req.setAttribute("pageSize", pageSize);
 		req.setAttribute("userID", userID);
+		req.setAttribute("departureCity", departureCity);
+		req.setAttribute("departureDate", departureDate);
+		req.setAttribute("arrivalCity", arrivalCity);
 		req.getRequestDispatcher("SearchFlight.jsp").forward(req, res);
 	}
 	

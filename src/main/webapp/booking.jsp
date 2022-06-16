@@ -31,7 +31,7 @@
 <body>
 	<div class="abs_container clearfix b_container">
 
-		<form action="OrdersServlet" method="post" class="b_form">
+		<form action="Orders?method=addOrder" method="post" class="b_form">
 			<input type="hidden" name="userID" value=${userID}>
 			<span class="b_form_title">乘客</span>
 
