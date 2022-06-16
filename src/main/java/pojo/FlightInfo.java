@@ -1,7 +1,9 @@
 package pojo;
 
 import java.io.Serializable;
-import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class FlightInfo implements Serializable {
 
@@ -16,14 +18,35 @@ public class FlightInfo implements Serializable {
 	private String price;//价格
 	private String airlineName;//航空公司名
 	private String airplaneName;//飞机名
-	private Date	depatureDate; //出发的日期
+	private Date   depatureDate; //出发的日期
 	
 	
 	public Date getDepatureDate() {
 		return depatureDate;
 	}
-	public void setDepatureDate(Date depatureDate) {
-		this.depatureDate = depatureDate;
+	public void setDepatureDate(String strdepatureDate){
+		//将string转成data
+		String[] strlist=strdepatureDate.split("\\.");
+		String str="";
+System.out.println(strlist[0]);
+		for(int i=0;i<strlist.length;i++) {
+			if(i==strlist.length-1) {
+				str=str+strlist[i];
+			}else {
+				str=str+strlist[i]+"-";
+			}
+		}
+System.out.println(str);
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date date;
+		try {
+			date = formatter.parse(str);
+			this.depatureDate = date;
+		} catch (ParseException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		
 	}
 	public String getAirlineName() {
 		return airlineName;

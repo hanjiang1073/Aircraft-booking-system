@@ -71,7 +71,7 @@ System.out.println("userID"+userID);
 		String fno=req.getParameter("fno");
 		req.setAttribute("userID", userID);
 		req.setAttribute("fno", fno);
-		req.getRequestDispatcher("Booking.jsp").forward(req, res);
+		req.getRequestDispatcher("Booking").forward(req, res);
 	}
 	
 }

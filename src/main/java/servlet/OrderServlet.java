@@ -142,60 +142,7 @@ public class OrderServlet extends HttpServlet {
 		request.setAttribute("flightInfoList", flightInfoList);	
 		request.setAttribute("order", order);	
 		request.getRequestDispatcher("/Order.jsp").forward(request, response);
-		
-////		for(int i = 0; i < seatTypeList.length; i++){
-////		seatTypeList[i] = request.getParameter("seatType" + (i + 1)); System.out.println(seatTypeList[i]);
-////	}
-////	String contactName = request.getParameter("contact");
-////	String contactPhone	= request.getParameter("phone");
-////	
-	
-	
-//	Orders order;
-//	try {
-//		for (String idString : fIDList) { 
-//			FlightInfo flightInfo = DaoFactory.getFlightInfoDaoInstance(DBName.ABS).findByID(Integer.parseInt(idString));
-//			if(null != flightInfo){
-//				flightInfoList.add(flightInfo);
-//			}
-//		}
-//		//	discount of same airline
-//		if(flightInfoList.size() == 2){
-//			FlightInfo f1 = flightInfoList.get(0);
-//			FlightInfo f2 = flightInfoList.get(1);
-//			
-//			if(f1.getAirlineCode().equals(f2.getAirlineCode())){
-//				double discount = DaoFactory.getAirlineDaoInstance(DBName.ABS).findByCode(f1.getAirlineCode()).getDiscount();
-//				f2.setFare(f2.getFare() * discount); 
-//			}
-//		}
-//	} catch (Exception e) {
-//		// TODO Auto-generated catch block
-//		e.printStackTrace();
-//	}
-//	
-//	List<Passenger> passengers = new ArrayList<Passenger>();
-//	for(int i = 0; i < nameList.length; i++){
-//		Passenger passenger = new Passenger();				System.out.println(i + " : " + nameList[i] + " " + passportList[i]);
-//		passenger.setName(nameList[i]);
-//		passenger.setPassport(passportList[i]);
-//		passengers.add(passenger);
-//	}
-//	
-//	Orders order = null;
-//	try {
-//		order = OrderAction.createOrder(flightInfoList, passengers, seatTypeList, contactName, contactPhone);
-//	} catch (Exception e) {
-//		// TODO Auto-generated catch block
-//		e.printStackTrace();
-//	}
-//
-//	
-//	request.setAttribute("flightInfoList", flightInfoList);	
-//	request.setAttribute("passengers", passengers);	
-//	request.setAttribute("order", order);	
-//	
-//	request.getRequestDispatcher("/generateOrder.jsp").forward(request,response);
+
 	}
 	
 

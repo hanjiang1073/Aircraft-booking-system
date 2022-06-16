@@ -40,10 +40,14 @@ public class FlightInfoImpl extends BaseDAO<FlightInfo>{
             if(rs.next()){
 System.out.println("得到结果集");
                 f = new FlightInfo();
-                f.setDepatureDate(rs.getDate(1));
-                String str=rs.getString(2).substring(11, 16);
+                String str=rs.getString(1).substring(0,10);
+System.out.println(str);               
+                f.setDepatureDate(str);
+                str=rs.getString(2).substring(11, 16);
+System.out.println(str);
                 f.setDeparttime(str);
                 str=rs.getString(3).substring(11, 16);
+System.out.println(str);   
                 f.setArrivetime(str);
                 f.setDepartapname(rs.getString(4));
                 f.setArriveapname(rs.getString(5));

@@ -88,7 +88,7 @@ public class UserServlet extends HttpServlet{
 		System.out.println(name);
 		userimpl=new UserDAOImpl();
 		User user =userimpl.getUser(name, pwd);
-		System.out.println(user.userName);
+//		System.out.println(user.getUserName());
 		if (user.getRole().equals("1")) {
 			req.setAttribute("userID", user.getUserID());
 //			res.sendRedirect("Reception.jsp");

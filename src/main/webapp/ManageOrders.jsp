@@ -36,8 +36,7 @@
 				<th>航班编号</th>
 				<th>价格</th>
 				<th>乘机人</th>
-				<th>乘机人信息</th>
-				<!-- <th>用户类型</th> --> 			
+				<th>乘机人信息</th>		
 				<th>操作</th>
 			</tr>
 		</thread>
@@ -66,7 +65,7 @@
 			<button type="button" onclick="javascript:go(${prePage})">上一页</button>
 			<button type="button" onclick="javascript:go(${nextPage})">下一页</button>
 			<button type="button" onclick="javascript:go(${totalPage})">尾页</button>
-			总记录条数${totalCount}条 当前${pageNo}/${totalPage}页 每${pageSize}条数据一页 
+			<%--总记录条数${totalCount}条  --%>当前${pageNo}/${totalPage}页 每${pageSize}条数据一页 
 		</td>
 	</table>
 	<script type="text/javascript">

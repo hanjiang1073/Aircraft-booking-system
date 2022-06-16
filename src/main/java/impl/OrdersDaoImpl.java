@@ -21,7 +21,7 @@ public class OrdersDaoImpl extends BaseDAO<Orders> {
 		
 	}
 
-	
+	//通过userID返回Order实体
 	public Orders findByID(String userID) throws Exception {
 		// TODO Auto-generated method stub
 		String sql = "select * from \"t_ticket\" where \"userID\"=?";
