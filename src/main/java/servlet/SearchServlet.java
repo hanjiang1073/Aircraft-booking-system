@@ -47,8 +47,6 @@ System.out.println("method:"+method);
 		String arrivalCity  =req.getParameter("arrivalCity");
 		
 		String userID=req.getParameter("userID");
-
-System.out.println(userID);
 		
 		//String returnDate  =req.getParameter("returnDate");
 		String pageNostring=req.getParameter("pageNo");
@@ -60,7 +58,7 @@ System.out.println(pageNo);
 		int pageSize=5;
 		
 		List<Flight> searchList = ssi.searchFlight(departureCity, departureDate, arrivalCity);
-System.out.println(searchList.isEmpty());	
+		System.out.println(searchList.isEmpty());	
 		int totalCount=searchList.size();
 		int totalPage=totalCount/pageSize;
 		if(totalCount%pageSize!=0||totalPage==0) {
@@ -79,6 +77,7 @@ System.out.println(searchList.isEmpty());
 		}
 		
 		searchList = ssi.searchFlight(departureCity, departureDate, arrivalCity , pageNo, pageSize);
+System.out.println(searchList.size());	
 		req.setAttribute("searchList", searchList);
 		req.setAttribute("totalCount", totalCount);
 		req.setAttribute("totalPage", totalPage);
