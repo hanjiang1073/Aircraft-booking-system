@@ -9,13 +9,14 @@ import pojo.Flight;
 import service.SearchService;
 
 public class SearchServiceImpl extends BaseDAO<Flight> implements SearchService{
-     
+
 	private FlightDAO flightDao ;
 	@Override
 	public List<Flight> searchFlight( String departureCity, String departureDate, String arrivalCity) {
 		// TODO Auto-generated method stub
 		if(departureCity.isEmpty()&&departureDate.isEmpty()&&arrivalCity.isEmpty()) {
 			System.out.println("3");
+			//全空的话返回所有记录
 			return executeQuery("select * from \"t_flight\"");
 		}
 		else {
@@ -25,10 +26,11 @@ public class SearchServiceImpl extends BaseDAO<Flight> implements SearchService{
 					departureDate,arrivalCity,departureCity);
 			   }
 	}
-	
-	
+
+
 	public List<Flight> searchFlight( String departureCity, String departureDate, String arrivalCity,int page,int pageSize) {
 // TODO Auto-generated method stub   ,\"price\"
+//全空返回所有记录
 		if(departureCity.isEmpty()&&departureDate.isEmpty()&&arrivalCity.isEmpty()) {
 			System.out.println("4");
 			return executeQuery("select \"fno\",\"pno\",\"departapname\",\"arriveapname\",\"departtime\",\"arrivetime\",\"price\" from (select rownum no, \"t_flight\".*   from \"t_flight\" where rownum<= ? ) temp where temp.no>=?",page*pageSize,(page-1)*pageSize+1);
