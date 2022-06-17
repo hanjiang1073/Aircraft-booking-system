@@ -19,10 +19,7 @@ public abstract class BaseDAO<T> {
 	private Class entityClass;//T的Class
 	
 	public BaseDAO(){
-        //getClass() 获取Class对象，当前我们执行的是new FruitDAOImpl() , 创建的是FruitDAOImpl的实例
-        //那么子类构造方法内部首先会调用父类（BaseDAO）的无参构造方法
-        //因此此处的getClass()会被执行，但是getClass获取的是FruitDAOImpl的Class
-        //所以getGenericSuperclass()获取到的是BaseDAO的Class
+        //getGenericSuperclass()获取到的是BaseDAO的Class
         Type genericType = getClass().getGenericSuperclass();
         //ParameterizedType 参数化类型
         Type[] actualTypeArguments = ((ParameterizedType) genericType).getActualTypeArguments();
